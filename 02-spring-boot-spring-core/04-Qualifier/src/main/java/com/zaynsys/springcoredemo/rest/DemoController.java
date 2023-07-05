@@ -11,6 +11,9 @@ public class DemoController {
     private final ICoach myCoach;
 
     // Constructor Injection
+
+    //Qualifier  Annotation has priority than @Primary
+
     public DemoController(@Qualifier("trackCoach") ICoach coach) {
         this.myCoach = coach;
     }
