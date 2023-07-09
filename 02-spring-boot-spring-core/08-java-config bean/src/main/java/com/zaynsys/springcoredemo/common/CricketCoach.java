@@ -14,4 +14,16 @@ public CricketCoach(){
         return "Practice fast bowling for 25 minutes";
     }
 
+
+
+    @PostConstruct
+    public void doMyStartupStuff(){
+    System.out.println("In doMystuff : " + getClass().getSimpleName());
+    }
+
+    @PreDestroy
+    public void doMyCleanUpstuff(){
+    System.out.println("In PreDestroy steps " + getClass().getSimpleName());
+    }
+
 }

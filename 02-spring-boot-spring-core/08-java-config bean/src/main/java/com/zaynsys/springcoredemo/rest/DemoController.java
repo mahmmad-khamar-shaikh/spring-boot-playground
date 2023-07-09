@@ -12,7 +12,7 @@ public class DemoController {
     // Constructor Injection
     //Qualifier  Annotation has priority than @Primary
 
-    public DemoController(@Qualifier("Aquatic") ICoach coach) {
+    public DemoController(@Qualifier("cricketCoach") ICoach coach) {
         System.out.println("In Constructor " + getClass().getSimpleName());
         this.myCoach = coach;
     }
