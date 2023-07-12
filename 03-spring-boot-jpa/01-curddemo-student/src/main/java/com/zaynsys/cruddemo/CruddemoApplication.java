@@ -18,11 +18,28 @@ public class CruddemoApplication {
     public CommandLineRunner commandlineRunner(IStudentDAO studentDAO) {
 
         return runner -> {
-        // createStudent(studentDAO);
-            createMultipleStudent(studentDAO);
+            // createStudent(studentDAO);
+//            createMultipleStudent(studentDAO);
+            readStudents(studentDAO);
         };
+    }
+
+    private void readStudents(IStudentDAO studentDAO) {
+// Create a student Object
+        System.out.println("Creating new student object");
+        Student tempStudent = new Student("Tony","Stark","Tony@mail.com");
+// Save the student
+        studentDAO.save(tempStudent);
+// display id of the saved student
+        int id= tempStudent.getId();
+        System.out.println("Saved student. GenerateId "+ id);
+
+// retrieve student based on the id
+      Student readStudent =  studentDAO.findById(id);
+        System.out.println("student  --- > "+ readStudent);
 
 
+// display student
     }
 
     private void createMultipleStudent(IStudentDAO studentDAO) {
@@ -30,8 +47,8 @@ public class CruddemoApplication {
         //CReate multiple student
 
         System.out.println("Creating multiple object");
-        Student s1= new Student("Zain","Shaikh","zain@mail.com");
-        Student s2= new Student("Tanzina","Shaikh","Tanzina@mail.com");
+        Student s1 = new Student("Zain", "Shaikh", "zain@mail.com");
+        Student s2 = new Student("Tanzina", "Shaikh", "Tanzina@mail.com");
 
         //Save the object
         System.out.println("saving multiple students");
@@ -41,16 +58,13 @@ public class CruddemoApplication {
         studentDAO.save(s2);
 
 
-
-
-
     }
 
     private void createStudent(IStudentDAO studentDAO) {
 
         // Create the student object
         System.out.println("Creating new student object ....");
-        Student tempStudent = new Student("Shahid","Shaikh","abc@mail.com");
+        Student tempStudent = new Student("Shahid", "Shaikh", "abc@mail.com");
 
         //save the student object
 
