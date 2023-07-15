@@ -11,4 +11,8 @@ public interface IStudentDAO {
     public List<Student> findAll();
 
     public List<Student> findByLastName(String lstName);
+
+    public void update(Student stdObject);
+
+    public void deleteById(Integer id);
 }
