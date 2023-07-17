@@ -21,20 +21,22 @@ public class CruddemoApplication {
 
         return runner -> {
             // createStudent(studentDAO);
- createMultipleStudent(studentDAO);
+   createMultipleStudent(studentDAO);
             // readStudents(studentDAO);
             // queryForStudents(studentDAO);
             // queryStudentsByLastName(studentDAO);
             // updateStudent(studentDAO);
            // deleteStudent(studentDAO);
-           // deleteAllStudent(studentDAO);
+          // deleteAllStudent(studentDAO);
 
 
         };
     }
 
+
     private void deleteAllStudent(IStudentDAO studentDAO) {
-        studentDAO.deleteAll();
+
+        System.out.println(studentDAO.deleteAll());
     }
     private void deleteStudent(IStudentDAO studentDAO) {
         int studentId = 4;
