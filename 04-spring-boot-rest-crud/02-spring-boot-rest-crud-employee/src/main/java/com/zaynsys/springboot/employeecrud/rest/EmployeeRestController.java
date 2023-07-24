@@ -3,10 +3,7 @@ package com.zaynsys.springboot.employeecrud.rest;
 import com.zaynsys.springboot.employeecrud.dao.IEmployDAO;
 import com.zaynsys.springboot.employeecrud.entity.Employee;
 import com.zaynsys.springboot.employeecrud.service.IEmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,4 +32,12 @@ public class EmployeeRestController {
         return emp;
     }
 
+    // add mapping for POST/Employees - add new employee
+
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee employee){
+        // also just in case they pass an id in JSON
+        employee.setId(0);
+        return employeeService.save(employee);
+    }
 }
