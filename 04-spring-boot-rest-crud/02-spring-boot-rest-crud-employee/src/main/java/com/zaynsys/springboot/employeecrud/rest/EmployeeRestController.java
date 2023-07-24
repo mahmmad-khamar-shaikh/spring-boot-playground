@@ -35,7 +35,7 @@ public class EmployeeRestController {
     // add mapping for POST/Employees - add new employee
 
     @PostMapping("/employees")
-    public Employee addEmployee(@RequestBody Employee employee){
+    public Employee addEmployee(@RequestBody Employee employee) {
         // also just in case they pass an id in JSON
         employee.setId(0);
         return employeeService.save(employee);
@@ -43,9 +43,20 @@ public class EmployeeRestController {
 
 
     @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee employee)
-    {
+    public Employee updateEmployee(@RequestBody Employee employee) {
         return employeeService.save(employee);
     }
+
+    @DeleteMapping("/employees/{employeeId}")
+    public String deleteEmployee(@PathVariable int employeeId) {
+        Employee emp = employeeService.findById(employeeId);
+        if(emp == null){
+            throw new RuntimeException("Employee id not found" + employeeId);
+        }
+        employeeService.deleteById(employeeId);
+        return "Deleted id  --- > " +employeeId;
+
+    }
+
 
 }
