@@ -1,6 +1,5 @@
 package com.zaynsys.springboot.employeecrud.rest;
 
-import com.zaynsys.springboot.employeecrud.dao.IEmployDAO;
 import com.zaynsys.springboot.employeecrud.entity.Employee;
 import com.zaynsys.springboot.employeecrud.service.IEmployeeService;
 import org.springframework.web.bind.annotation.*;

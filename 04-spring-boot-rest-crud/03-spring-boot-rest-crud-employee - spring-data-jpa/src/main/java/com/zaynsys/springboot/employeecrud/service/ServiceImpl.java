@@ -1,42 +1,48 @@
 package com.zaynsys.springboot.employeecrud.service;
 
-import com.zaynsys.springboot.employeecrud.dao.IEmployDAO;
+import com.zaynsys.springboot.employeecrud.dao.IEmployeeRepository;
 import com.zaynsys.springboot.employeecrud.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServiceImpl implements IEmployeeService {
 
-    private IEmployDAO employDAO;
+    private IEmployeeRepository employeeRepository;
 
     @Autowired
-    public ServiceImpl(IEmployDAO employDAO) {
-        this.employDAO = employDAO;
+    public ServiceImpl(IEmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
     public List<Employee> findAll() {
-        return this.employDAO.findAll();
+        return this.employeeRepository.findAll();
     }
 
     @Override
     public Employee findById(int id) {
-        return this.employDAO.findById(id);
+        final Optional<Employee> result = this.employeeRepository.findById(id);
+        Employee employee = null;
+        if(result.isPresent()){
+            employee= result.get();
+        }else{
+            throw new RuntimeException("did not find employeeID "+ id);
+        }
+        return employee;
     }
 
-    @Transactional
     @Override
     public Employee save(Employee emp) {
-        return this.employDAO.save(emp);
+        return this.employeeRepository.save(emp);
     }
 
-    @Transactional
     @Override
     public void deleteById(int id) {
-        this.employDAO.deleteById(id);
+        this.employeeRepository.deleteById(id);
     }
 }
