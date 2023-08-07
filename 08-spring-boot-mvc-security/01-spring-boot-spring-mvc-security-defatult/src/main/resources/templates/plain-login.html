@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Login Form</title>
+</head>
+<body>
+<h3>
+    My Custom login page
+</h3>
+<form action="#" th:action="@{/authenticateTheUser}" method="post">
+    <p>
+        User Name: <input type="text" name="username" />
+        Password: <input type="password" name="password" />
+    </p>
+
+    <input type="submit" value="login" />
+</form>
+
+</body>
+</html>
