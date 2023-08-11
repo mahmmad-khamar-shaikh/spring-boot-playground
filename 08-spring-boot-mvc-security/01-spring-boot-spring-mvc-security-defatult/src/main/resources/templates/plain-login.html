@@ -8,13 +8,19 @@
 <h3>
     My Custom login page
 </h3>
-<form action="#" th:action="@{/authenticateTheUser}" method="post">
+<form action="#"  th:action="@{/authenticateTheUser}" method="post">
+    <div th:if="${param.error}">
+        <i>
+            Invalid Username/Passord
+        </i>
+
+    </div>
     <p>
-        User Name: <input type="text" name="username" />
-        Password: <input type="password" name="password" />
+        User Name: <input type="text" name="username"/>
+        Password: <input type="password" name="password"/>
     </p>
 
-    <input type="submit" value="login" />
+    <input type="submit" value="login"/>
 </form>
 
 </body>
