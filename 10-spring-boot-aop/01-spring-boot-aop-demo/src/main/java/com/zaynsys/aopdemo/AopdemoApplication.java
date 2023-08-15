@@ -1,5 +1,6 @@
 package com.zaynsys.aopdemo;
 
+import com.zaynsys.aopdemo.dao.IAccountDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,10 +14,16 @@ public class AopdemoApplication {
 
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args){
+	public CommandLineRunner commandLineRunner(IAccountDAO accountDAO){
 		return runner -> {
-			System.out.println("Welcome to APp");
+
+			demoTheBeforeAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheBeforeAdvice(IAccountDAO accountDAO) {
+		// Call the business Method
+		accountDAO.addAccount();
 	}
 
 }
