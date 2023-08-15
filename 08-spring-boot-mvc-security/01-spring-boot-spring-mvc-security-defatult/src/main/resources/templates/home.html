@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymleaf.org"
-                xmlns:sec="http://www.thymleaf.org/extras/spring-security" />
+      xmlns:sec="http://www.thymleaf.org/extras/spring-security"/>
 <head>
     <meta charset="UTF-8">
     <title> Zaynsys Home page</title>
@@ -22,23 +22,23 @@
 <hr>
 
 <!-- Add a link to point to /leaders this is for managers.-->
-<p>
-   <a th:href="@{/leaders}"> leadership Meeting</a> (Only for managers)
-</p>
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{/leaders}"> leadership Meeting</a> (Only for managers)
+    </p>
 
-
+</div>
 <!--For IT Admins only-->
-<p>
-    <a th:href="@{/systems}">IT System Meetings</a> (Only for Admins)
-</p>
 
-
-
-
+<div sec:authorize="hasRole('ADMIN')">
+    <p>
+        <a th:href="@{/systems}">IT System Meetings</a> (Only for Admins)
+    </p>
+</div>
 
 
 <form action="#" th:action="@{/logout}" method="post">
-    <input type="submit" value="logout" />
+    <input type="submit" value="logout"/>
 </form>
 
 
